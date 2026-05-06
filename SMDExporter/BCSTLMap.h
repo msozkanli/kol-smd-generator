@@ -10,14 +10,10 @@
 
 #pragma once
 
-#include <boost/unordered_map.hpp>
-#include <boost/thread/locks.hpp>
-#include <boost/foreach.hpp>
-#include <boost/iterator.hpp>
-#include <boost/thread/recursive_mutex.hpp>
+#include <unordered_map>
+#include <mutex>
 
 using uint32 = unsigned __int32;
-//using Mutex = boost::recursive_mutex;
 #define VCALL __fastcall
 
 
@@ -25,11 +21,11 @@ template <class T>
 class BCSTLMap
 {
 public:
-	typedef boost::unordered_map<unsigned __int32, T*> Map;
-	typedef typename boost::unordered_map<unsigned __int32, T*>::iterator Iterator;
+	typedef std::unordered_map<unsigned __int32, T*> Map;
+	typedef typename std::unordered_map<unsigned __int32, T*>::iterator Iterator;
 
-	typedef typename boost::recursive_mutex Mutex;
-	typedef  boost::recursive_mutex::scoped_lock Guard;
+	typedef std::recursive_mutex Mutex;
+	typedef std::lock_guard<std::recursive_mutex> Guard;
 	Mutex _access;
 	Map m_UserTypeMap;
 
@@ -83,7 +79,7 @@ public:
 		Guard lock(_access);
 		if (m_UserTypeMap.empty())
 			return;
-		BOOST_FOREACH(Map::value_type pair, m_UserTypeMap)
+		for (auto& pair : m_UserTypeMap)
 		{
 			delete pair.second;
 		}

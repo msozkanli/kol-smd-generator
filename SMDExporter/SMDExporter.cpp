@@ -14,9 +14,23 @@
 #include "stdafx.h"
 #include <vector>
 #include <filesystem>
-#include <boost/algorithm/string.hpp>
+#include <algorithm>
 #include "tstring.h"
 #include "GameserverMap.h"
+
+static bool ext_iequals(const std::string& a, const std::string& b) {
+	if (a.size() != b.size()) return false;
+	for (size_t i = 0; i < a.size(); ++i) if (tolower((unsigned char)a[i]) != tolower((unsigned char)b[i])) return false;
+	return true;
+}
+static void str_replace_all(std::string& s, const std::string& from, const std::string& to) {
+	if (from.empty()) return;
+	size_t pos = 0;
+	while ((pos = s.find(from, pos)) != std::string::npos) {
+		s.replace(pos, from.size(), to);
+		pos += to.size();
+	}
+}
 
 /*
 	Server map data generator
@@ -38,10 +52,11 @@ static void init_mapnames()
 	try {
 		for (auto & p : std::filesystem::directory_iterator(path)) {
 			if (p.is_regular_file()) {
-				if (p.path().has_filename() && p.path().has_extension() && boost::iequals(p.path().extension().string(), ".opd")) {
+				if (p.path().has_filename() && p.path().has_extension() && ext_iequals(p.path().extension().string(), ".opd")) {
 					
 					std::string fname = p.path().filename().string();
-					boost::replace_all(fname, ".opd", "");
+					str_replace_all(fname, ".opd", "");
+					str_replace_all(fname, ".OPD", "");
 					mapNames.push_back(fname);
 				}
 
@@ -102,37 +117,39 @@ static void init_mapnames()
 
 }
 
+void make_one_map(const std::string& val)
+{
+	printf("** Making %s.gsmd..**\n", val.c_str());
+	fflush(stdout);
+	std::string tileFileName = string_format(".\\tile\\%s%s", val.c_str(), ".tile");
+	std::string gsmapFileName = string_format(".\\gsmd\\%s%s", val.c_str(), ".gsmd");
+	CGameserverMap * gsMap = nullptr;
+
+	gsMap = CGameserverMap::Load(string_format("%s.opd", val.c_str()), string_format("%s.gtd", val.c_str()));
+	if (gsMap)
+	{
+		gsMap->LoadAndWriteExternalTile(tileFileName);
+		gsMap->SaveGameserverMapData(gsmapFileName);
+		printf("** Done making %s.gsmd **\n", val.c_str());
+	}
+	else
+	{
+		printf("!! GSMD generation failed for %s (Load returned null) !!\n", val.c_str());
+	}
+	delete gsMap;
+	fflush(stdout);
+}
+
 void make_gsmdfiles()
 {
 	printf("Generating GSMD files..\n");
 
 	for (const auto & val : mapNames)
 	{
-		printf("** Making %s.gsmd..**\n", val.c_str());
-		std::string tileFileName = string_format(".\\tile\\%s%s", val.c_str(), ".tile");
-		std::string gsmapFileName = string_format(".\\gsmd\\%s%s", val.c_str(), ".gsmd");
-		CGameserverMap * gsMap;
-
-	
-
-		gsMap = CGameserverMap::Load(string_format("%s.opd", val.c_str()), string_format("%s.gtd", val.c_str()));
-		if(gsMap)
-		{
-			gsMap->LoadAndWriteExternalTile(tileFileName);
-			gsMap->SaveGameserverMapData(gsmapFileName);
-			printf("** Done making %s.gsmd **\n", val.c_str());
-		/*	if (val == "moradon")
-				__debugbreak();*/
-		}
-		else
-		{
-			printf("!! GSMD generation failed for %s !!\n", val.c_str());
-		}
-		delete gsMap;
+		make_one_map(val);
 	}
 
 	printf("GSMD generation finished.\n");
-
 }
 
 void check_allmap()
@@ -165,16 +182,15 @@ void check_allmap()
 
 }
 
-int main()
+int main(int argc, char* argv[])
 {
+	if (argc >= 2) {
+		std::string mapName = argv[1];
+		make_one_map(mapName);
+		return 0;
+	}
 	init_mapnames();
 	make_gsmdfiles();
-	check_allmap();
-
-
-	/**/
-
-	system("pause");
-    return 0;
+	return 0;
 }
 

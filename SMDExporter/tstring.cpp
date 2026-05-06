@@ -11,7 +11,7 @@
 #include "tstring.h"
 #include <cstdarg>
 #include <cctype>
-#include <boost/algorithm/string.hpp>
+#include <algorithm>
 
 void _string_format(const std::string fmt, std::string * result, va_list args) {
 	char buffer[1024];
@@ -52,15 +52,13 @@ bool is_whitespace_only(const std::string & value) {
 	return value.find_first_not_of(' ') == std::string::npos;
 }
 
-// trim from end
 std::string & rtrim(std::string &s) {
-	boost::algorithm::trim_right(s);
+	s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char c) { return !std::isspace(c); }).base(), s.end());
 	return s;
 }
 
-// trim from start
 std::string & ltrim(std::string &s) {
-	boost::algorithm::trim_left(s);
+	s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char c) { return !std::isspace(c); }));
 	return s;
 }
 

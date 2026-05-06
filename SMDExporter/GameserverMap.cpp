@@ -223,7 +223,8 @@ bool CGameserverMap::SaveGameserverMapData(const std::string& szFileName)
 	/* Write map version */
 	//fwrite(&GAMESERVER_MAP_VERSION_HI, sizeof(uint8), 1, fp);
 	//fwrite(&GAMESERVER_MAP_VERSION_LO, sizeof(uint8), 1, fp);
-	m_GSMDHeader.WriteHeader(fp);
+	// HEADER DISABLED: NTTGame 2444 SMD format does not use a header.
+	// m_GSMDHeader.WriteHeader(fp);
 
 	/// Write terrain data
 	m_TerrainData.SaveToFilestream(fp);

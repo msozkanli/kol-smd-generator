@@ -1,0 +1,15 @@
+< BIND POINTS >
+< TYPE 1 GATES >
+< TYPE 2 GATES >
+< GATE LEVERS >
+< FLAGS >
+< WARP GATES >
+Object ID 4020, Associated NPC :711, Type : 5, Nation 1, Status : 1, POS(1375,11.6188,1085), Name : unknown 
+Object ID 4019, Associated NPC :712, Type : 5, Nation 2, Status : 1, POS(622,11.6103,911), Name : unknown 
+< BARRICADES >
+< BIND POINTS (remove) >
+< MAGIC ANVILS >
+< ARTIFACTS >
+< FULL LIST >
+Object ID 4020, Associated NPC :711, Type : 5, Nation 1, Status : 1, POS(1375,11.6188,1085) 
+Object ID 4019, Associated NPC :712, Type : 5, Nation 2, Status : 1, POS(622,11.6103,911) 

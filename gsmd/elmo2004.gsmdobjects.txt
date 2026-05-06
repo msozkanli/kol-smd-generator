@@ -1,0 +1,37 @@
+< BIND POINTS >
+Object ID 201, Associated NPC :0, Type : 0, Nation 2, Status : 1, POS(1606.11,15.9717,436.014), Name : unknown 
+Object ID 202, Associated NPC :0, Type : 0, Nation 2, Status : 1, POS(1617.97,52.6376,1368.23), Name : unknown 
+Object ID 203, Associated NPC :0, Type : 0, Nation 2, Status : 1, POS(349.737,-18.513,1133.79), Name : unknown 
+Object ID 204, Associated NPC :0, Type : 0, Nation 2, Status : 1, POS(1035.48,15.0874,1135.87), Name : unknown 
+< TYPE 1 GATES >
+Object ID 4400, Associated NPC :2702, Type : 1, Nation 2, Status : 1, POS(1527.67,20.9623,243.174), Name : unknown 
+< TYPE 2 GATES >
+< GATE LEVERS >
+Object ID 2702, Associated NPC :4400, Type : 3, Nation 2, Status : 1, POS(1530.25,22.4793,235.064), Name : unknown 
+< FLAGS >
+< WARP GATES >
+Object ID 4004, Associated NPC :22, Type : 5, Nation 2, Status : 1, POS(1676.03,52.6376,1368.61), Name : unknown 
+Object ID 4003, Associated NPC :21, Type : 5, Nation 2, Status : 1, POS(1587.51,15.7583,417.362), Name : unknown 
+Object ID 4013, Associated NPC :27, Type : 5, Nation 2, Status : 1, POS(1067.35,15.0875,1136.17), Name : unknown 
+Object ID 4005, Associated NPC :23, Type : 5, Nation 2, Status : 1, POS(298.816,-18.513,1228.72), Name : unknown 
+Object ID 4009, Associated NPC :24, Type : 5, Nation 2, Status : 1, POS(1079.72,-7.17454,1860.73), Name : unknown 
+Object ID 4011, Associated NPC :26, Type : 5, Nation 2, Status : 1, POS(204.202,23.6686,1873.61), Name : unknown 
+Object ID 4001, Associated NPC :25, Type : 5, Nation 2, Status : 1, POS(672.338,26.2828,183.209), Name : unknown 
+< BARRICADES >
+< BIND POINTS (remove) >
+< MAGIC ANVILS >
+< ARTIFACTS >
+< FULL LIST >
+Object ID 201, Associated NPC :0, Type : 0, Nation 2, Status : 1, POS(1606.11,15.9717,436.014) 
+Object ID 4004, Associated NPC :22, Type : 5, Nation 2, Status : 1, POS(1676.03,52.6376,1368.61) 
+Object ID 202, Associated NPC :0, Type : 0, Nation 2, Status : 1, POS(1617.97,52.6376,1368.23) 
+Object ID 4003, Associated NPC :21, Type : 5, Nation 2, Status : 1, POS(1587.51,15.7583,417.362) 
+Object ID 203, Associated NPC :0, Type : 0, Nation 2, Status : 1, POS(349.737,-18.513,1133.79) 
+Object ID 4013, Associated NPC :27, Type : 5, Nation 2, Status : 1, POS(1067.35,15.0875,1136.17) 
+Object ID 4005, Associated NPC :23, Type : 5, Nation 2, Status : 1, POS(298.816,-18.513,1228.72) 
+Object ID 4009, Associated NPC :24, Type : 5, Nation 2, Status : 1, POS(1079.72,-7.17454,1860.73) 
+Object ID 204, Associated NPC :0, Type : 0, Nation 2, Status : 1, POS(1035.48,15.0874,1135.87) 
+Object ID 4011, Associated NPC :26, Type : 5, Nation 2, Status : 1, POS(204.202,23.6686,1873.61) 
+Object ID 4001, Associated NPC :25, Type : 5, Nation 2, Status : 1, POS(672.338,26.2828,183.209) 
+Object ID 4400, Associated NPC :2702, Type : 1, Nation 2, Status : 1, POS(1527.67,20.9623,243.174) 
+Object ID 2702, Associated NPC :4400, Type : 3, Nation 2, Status : 1, POS(1530.25,22.4793,235.064) 

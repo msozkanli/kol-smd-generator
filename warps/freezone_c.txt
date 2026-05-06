@@ -1,0 +1,17 @@
+# Ronark Land Base (zone 73 - older)
+# Warp gate NPCs: 731 (Karus), 732 (Elmo)
+# Format: warpID  zone  x  y  z  radius  nation  pay  name
+
+# NPC 731 (Karus)
+7310  21  816  0  532  20  0  0  Moradon
+7311   1  437  0 1627  20  1  0  LufersonCastle
+7312  11  526  0  540  20  1  0  Eslant
+7313 113  963  0 1002  20  0  0  RonarkLand
+7314 108  515  0  104  20  0  0  RonarkLandBase
+
+# NPC 732 (Elmo)
+7320  21  816  0  532  20  0  0  Moradon
+7321   2 1598  0  407  20  2  0  ElMoradCastle
+7322  12  526  0  540  20  2  0  ElmoradEslant
+7323 113 1061  0 1008  20  0  0  RonarkLand
+7324 108  513  0  916  20  0  0  RonarkLandBase

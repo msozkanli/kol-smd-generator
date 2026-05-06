@@ -1,0 +1,19 @@
+# Ronark Land Base (zone 108)
+# Warp gate NPCs: 711 (Karus), 712 (Elmo)  -- same NPCs as freezone_b
+# Format: warpID  zone  x  y  z  radius  nation  pay  name
+
+# NPC 711 (Karus)
+7110  21  816  0  532  20  0  0  Moradon
+7111   1  437  0 1627  20  1  0  LufersonCastle
+7112  11  526  0  540  20  1  0  Eslant
+7113  31   76  0  729  20  0  0  Bifrost
+7114  30  505  0  252  20  0  0  Delos
+7115 113  963  0 1002  20  0  0  RonarkLand
+
+# NPC 712 (Elmo)
+7120  21  816  0  532  20  0  0  Moradon
+7121   2 1598  0  407  20  2  0  ElMoradCastle
+7122  12  526  0  540  20  2  0  ElmoradEslant
+7123  31  244  0  945  20  0  0  Bifrost
+7124  30  505  0  252  20  0  0  Delos
+7125 113 1061  0 1008  20  0  0  RonarkLand

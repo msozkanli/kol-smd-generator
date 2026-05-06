@@ -12,6 +12,9 @@
 #include "stdafx.h"
 #include "GameserverMap.h"
 #include "tstring.h"
+#include <vector>
+#include <string>
+#include <string.h>
 
 
 CGameserverMap::CGameserverMap() :m_nXRegion(-1), m_nZRegion(-1),m_ppEvents(nullptr),m_iMapSize(0)
@@ -210,6 +213,91 @@ void CGameserverMap::GenerateMoveTable()
 	m_ObjectPostData.GetShapeMgr()->MakeMoveTable(m_ppEvents);
 }
 
+// Helper: Write warp list section from external warps/<mapname>.txt file.
+// File format (one warp per line, # for comments):
+//   warpID  zone  x  y  z  radius  nation  pay  name...
+// Server expects: int regeneCount(=0) + int warpCount + N x 320 bytes _WARP_INFO struct (pack=1)
+static void WriteWarpsForMap(FILE* fp, const std::string& szFileName)
+{
+	// Always write regeneCount=0 first (server LoadRegeneEvent reads this before LoadWarpList)
+	int regeneCount = 0;
+	fwrite(&regeneCount, 4, 1, fp);
+
+	// Extract base map name from szFileName (e.g. ".\gsmd\moradon_0826.gsmd" -> "moradon_0826")
+	std::string baseName = szFileName;
+	size_t lastSlash = baseName.find_last_of("/\\");
+	if (lastSlash != std::string::npos) baseName = baseName.substr(lastSlash + 1);
+	size_t dotPos = baseName.find_last_of('.');
+	if (dotPos != std::string::npos) baseName = baseName.substr(0, dotPos);
+
+	std::string warpFile = "warps/" + baseName + ".txt";
+	FILE* wfp = nullptr;
+	fopen_s(&wfp, warpFile.c_str(), "r");
+
+	if (!wfp)
+	{
+		int warpCount = 0;
+		fwrite(&warpCount, 4, 1, fp);
+		printf("[Warps] No warps/%s.txt - empty warp list\n", baseName.c_str());
+		return;
+	}
+
+	// Read all warps into a buffer
+	std::vector<std::vector<unsigned char>> warps;
+	char line[1024];
+	while (fgets(line, sizeof(line), wfp))
+	{
+		if (line[0] == '#' || line[0] == '\n' || line[0] == '\r' || line[0] == 0) continue;
+
+		int warpID = 0, zone = 0, nation = 0, pay = 0;
+		float x = 0, y = 0, z = 0, radius = 50;
+		char name[256] = {0};
+
+		// Parse: warpID zone x y z radius nation pay name...
+		int parsed = sscanf_s(line, "%d %d %f %f %f %f %d %d %255[^\r\n]",
+			&warpID, &zone, &x, &y, &z, &radius, &nation, &pay,
+			name, (unsigned)sizeof(name));
+
+		if (parsed < 6) continue;
+
+		// Build 320-byte _WARP_INFO struct (pack=1, exact layout)
+		std::vector<unsigned char> buf(320, 0);
+		// [0..1]    sWarpID (short)
+		*(short*)&buf[0] = (short)warpID;
+		// [2..33]   strWarpName[32]
+		strncpy_s((char*)&buf[2], 32, name, 31);
+		// [34..289] strAnnounce[256] -> already zeros
+		// [290..291] sUnk0 -> 0
+		// [292..295] dwPay (uint32)
+		*(unsigned int*)&buf[292] = (unsigned int)pay;
+		// [296..297] sZone (short)
+		*(short*)&buf[296] = (short)zone;
+		// [298..299] sUnk1 -> 0
+		// [300..303] fX
+		*(float*)&buf[300] = x;
+		// [304..307] fY
+		*(float*)&buf[304] = y;
+		// [308..311] fZ
+		*(float*)&buf[308] = z;
+		// [312..315] fR (radius)
+		*(float*)&buf[312] = radius;
+		// [316..317] sNation (short)
+		*(short*)&buf[316] = (short)nation;
+		// [318..319] sUnk2 -> 0
+
+		warps.push_back(buf);
+	}
+	fclose(wfp);
+
+	int warpCount = (int)warps.size();
+	fwrite(&warpCount, 4, 1, fp);
+	for (auto& w : warps)
+		fwrite(w.data(), 320, 1, fp);
+
+	printf("[Warps] Loaded %d warps for %s from %s\n",
+		warpCount, baseName.c_str(), warpFile.c_str());
+}
+
 bool CGameserverMap::SaveGameserverMapData(const std::string& szFileName)
 {
 
@@ -230,22 +318,13 @@ bool CGameserverMap::SaveGameserverMapData(const std::string& szFileName)
 	m_TerrainData.SaveToFilestream(fp);
 	/// Save collision data
 	m_ObjectPostData.GetShapeMgr()->SaveCollisionData(fp);
-	// TODO : Add opdext collision data
-	int nObjectEventCount = m_ObjectEvents.GetSize();
-	///
+	// FIX: Server reads 24 bytes per _OBJECT_EVENT but we wrote 19 bytes - 5 byte mismatch
+	// per event corrupting move table & warp data positions. Server actually loads object
+	// events from K_OBJECTPOS DB table, the SMD ones are throwaway. Write count=0 to skip
+	// the section entirely - server's for-loop won't execute, file pointer stays clean.
+	int nObjectEventCount = 0;
 	fwrite(&nObjectEventCount, 4, 1, fp);
-	foreach_stlmap(itr,m_ObjectEvents)
-	{
-		_OBJECT_EVENT * pObjectEvent = itr->second;
-		fwrite(&pObjectEvent->sObjectID, sizeof(short), 1, fp);
-		fwrite(&pObjectEvent->sAssociatedNpcID, sizeof(short), 1, fp);
-		fwrite(&pObjectEvent->byType, sizeof(unsigned __int8), 1, fp);
-		fwrite(&pObjectEvent->byNation, sizeof(unsigned __int8), 1, fp);
-		fwrite(&pObjectEvent->byStatus, sizeof(unsigned __int8), 1, fp);
-		fwrite(&pObjectEvent->fPosX, sizeof(float), 1, fp);
-		fwrite(&pObjectEvent->fPosY, sizeof(float), 1, fp);
-		fwrite(&pObjectEvent->fPosZ, sizeof(float), 1, fp);	
-	}
+	// (Original 19-byte event writes removed; objects.txt debug dump below still uses m_ObjectEvents)
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -316,6 +395,10 @@ bool CGameserverMap::SaveGameserverMapData(const std::string& szFileName)
 
 	/// Save tile data
 	SaveMoveTableToStream(fp);
+
+	// NEW: Append regene events (count=0) + warp list section
+	// Server's SMDFile::LoadMap reads these AFTER move table when bLoadWarpsAndRegeneEvents=true
+	WriteWarpsForMap(fp, szFileName);
 
 	fclose(fp);
 	fclose(fp2);

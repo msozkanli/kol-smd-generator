@@ -1,0 +1,50 @@
+# Luferson Castle (Karus) warps - SHIFTED mapping (sWarpID = gate_group*10 + visualPos)
+# Client hides sWarpID with last digit 0 (header/null slot)
+# Visible warps are at visual positions 1-N, mapped to sWarpID gate*10+1 .. gate*10+N
+# 
+# Format: warpID  zone  x  y  z  radius  nation  pay  name(client ignores)
+
+# === NPC 11 (main Karus Castle gate) - mirror Moradon's Karus gate ===
+110   21   816  0   532  20  0  0  Hidden
+111   18   850  0   850  20  0  0  FolkVillage      # Visual 1
+112   28   850  0   850  20  0  0  TaleVillage      # Visual 2
+113   21   816  0   532  20  0  0  Moradon          # Visual 3
+114   11   526  0   540  20  1  0  KarusEslant      # Visual 4
+115   30   505  0   252  20  0  0  Delos            # Visual 5
+116   72   851  0   136  20  0  0  Ardream          # Visual 6
+117  108   515  0   104  20  0  0  RonarkLandBase   # Visual 7
+118  113   963  0  1002  20  0  0  RonarkLand       # Visual 8
+
+# === NPC 12 ===
+120   21   816  0   532  20  0  0  Hidden
+121   21   816  0   532  20  0  0  Moradon
+122   11   526  0   540  20  1  0  Eslant
+123   31    76  0   729  20  0  0  Bifrost
+
+# === NPC 13 ===
+130   21   816  0   532  20  0  0  Hidden
+131   21   816  0   532  20  0  0  Moradon
+132   11   526  0   540  20  1  0  Eslant
+133   30   505  0   252  20  0  0  Delos
+
+# === NPC 14 ===
+140   21   816  0   532  20  0  0  Hidden
+141   21   816  0   532  20  0  0  Moradon
+142   11   526  0   540  20  1  0  Eslant
+143   31    76  0   729  20  0  0  Bifrost
+
+# === NPC 15 ===
+150   21   816  0   532  20  0  0  Hidden
+151   21   816  0   532  20  0  0  Moradon
+152   11   526  0   540  20  1  0  Eslant
+153   30   505  0   252  20  0  0  Delos
+
+# === NPC 16 ===
+160   21   816  0   532  20  0  0  Hidden
+161   21   816  0   532  20  0  0  Moradon
+162   11   526  0   540  20  1  0  Eslant
+
+# === NPC 17 ===
+170   21   816  0   532  20  0  0  Hidden
+171   21   816  0   532  20  0  0  Moradon
+172   11   526  0   540  20  1  0  Eslant

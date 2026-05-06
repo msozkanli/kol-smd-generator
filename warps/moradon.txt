@@ -1,0 +1,29 @@
+# Moradon warp destinations - CORRECT mapping (sWarpID = 2120 + visualPos)
+# Client hides sWarpID with last digit 0 (header/null slot)
+# Visible warps are sWarpID 2121-2128, mapped to visual positions 1-8
+# 
+# Format: warpID  zone  x  y  z  radius  nation  pay  name(client ignores)
+
+# === Elmorad gate (NPC 212) ===
+# 2120 = hidden header (any safe destination, won't display)
+2120   21   816  0   532  20  0  0  Hidden
+# Visible warps:
+2121   18   850  0   850  20  0  0  FolkVillage     # Visual 1: Folk -> Old Karus
+2122   28   850  0   850  20  0  0  TaleVillage     # Visual 2: Tale -> Old Human
+2123    2  1598  0   407  20  0  0  ElmoradCastle   # Visual 3: El Morad Castle -> zone 2
+2124   11   526  0   540  20  0  0  LunarValley     # Visual 4: Lunar Valley -> Karus Eslant
+2125   30   505  0   252  20  0  0  Delos           # Visual 5: Delos -> zone 30
+2126   72   190  0   897  20  0  0  Ardream         # Visual 6: Ardream -> zone 72
+2127  108   513  0   916  20  0  0  RonarkLandBase  # Visual 7: RLB -> zone 108
+2128  113  1061  0  1008  20  0  0  RonarkLand      # Visual 8: Ronark Land -> zone 113
+
+# === Karus gate (NPC 211) - same shifted pattern ===
+2110   21   816  0   532  20  0  0  Hidden
+2111   18   850  0   850  20  0  0  FolkVillage
+2112   28   850  0   850  20  0  0  TaleVillage
+2113    1   437  0  1627  20  0  0  LufersonCastle
+2114   11   526  0   540  20  0  0  LunarValley
+2115   30   505  0   252  20  0  0  Delos
+2116   72   851  0   136  20  0  0  Ardream
+2117  108   513  0   916  20  0  0  RonarkLandBase
+2118  113   963  0  1002  20  0  0  RonarkLand

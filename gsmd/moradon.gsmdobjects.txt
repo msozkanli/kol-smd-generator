@@ -1,0 +1,25 @@
+< BIND POINTS >
+Object ID 1019, Associated NPC :1019, Type : 0, Nation 0, Status : 0, POS(673.075,-8.71137,179.467), Name : unknown 
+Object ID 1020, Associated NPC :1020, Type : 0, Nation 0, Status : 0, POS(672.625,-8.71137,140.769), Name : unknown 
+Object ID 1022, Associated NPC :1022, Type : 0, Nation 0, Status : 0, POS(709.855,-9.91137,142.619), Name : unknown 
+Object ID 1021, Associated NPC :1021, Type : 0, Nation 0, Status : 0, POS(632.266,-9.83035,178.89), Name : unknown 
+< TYPE 1 GATES >
+< TYPE 2 GATES >
+< GATE LEVERS >
+< FLAGS >
+< WARP GATES >
+Object ID 4014, Associated NPC :211, Type : 5, Nation 1, Status : 1, POS(797.696,4.84992,526.879), Name : unknown 
+Object ID 4013, Associated NPC :212, Type : 5, Nation 2, Status : 1, POS(837.36,4.78032,526.757), Name : unknown 
+< BARRICADES >
+< BIND POINTS (remove) >
+< MAGIC ANVILS >
+Object ID 5001, Associated NPC :0, Type : 8, Nation 1, Status : 1, POS(816.136,13.648,607.172), Name : unknown 
+< ARTIFACTS >
+< FULL LIST >
+Object ID 4014, Associated NPC :211, Type : 5, Nation 1, Status : 1, POS(797.696,4.84992,526.879) 
+Object ID 5001, Associated NPC :0, Type : 8, Nation 1, Status : 1, POS(816.136,13.648,607.172) 
+Object ID 4013, Associated NPC :212, Type : 5, Nation 2, Status : 1, POS(837.36,4.78032,526.757) 
+Object ID 1019, Associated NPC :1019, Type : 0, Nation 0, Status : 0, POS(673.075,-8.71137,179.467) 
+Object ID 1020, Associated NPC :1020, Type : 0, Nation 0, Status : 0, POS(672.625,-8.71137,140.769) 
+Object ID 1022, Associated NPC :1022, Type : 0, Nation 0, Status : 0, POS(709.855,-9.91137,142.619) 
+Object ID 1021, Associated NPC :1021, Type : 0, Nation 0, Status : 0, POS(632.266,-9.83035,178.89) 

@@ -1,0 +1,26 @@
+# Delos (zone 30)
+# Warp gate NPCs: 301 (Karus), 302 (Elmo), 303 (Karus), 304 (Elmo), 305 (any)
+# Format: warpID  zone  x  y  z  radius  nation  pay  name
+
+# NPC 301 (Karus)
+3010  21  816  0  532  20  0  0  Moradon
+3011   1  437  0 1627  20  1  0  LufersonCastle
+3012  11  526  0  540  20  1  0  Eslant
+
+# NPC 302 (Elmo)
+3020  21  816  0  532  20  0  0  Moradon
+3021   2 1598  0  407  20  2  0  ElMoradCastle
+3022  12  526  0  540  20  2  0  ElmoradEslant
+
+# NPC 303 (Karus)
+3030  21  816  0  532  20  0  0  Moradon
+3031   1  437  0 1627  20  1  0  LufersonCastle
+
+# NPC 304 (Elmo)
+3040  21  816  0  532  20  0  0  Moradon
+3041   2 1598  0  407  20  2  0  ElMoradCastle
+
+# NPC 305 (any)
+3050  21  816  0  532  20  0  0  Moradon
+3051 113  963  0 1002  20  0  0  RonarkLand
+3052 108  515  0  104  20  0  0  RonarkLandBase

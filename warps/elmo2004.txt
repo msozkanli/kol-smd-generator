@@ -1,57 +1,72 @@
-# El Morad Castle warps - SHIFTED mapping (sWarpID = gate_group*10 + visualPos)
-# Client hides sWarpID with last digit 0 (header/null slot)
-# 
-# NPC 21 visible labels (per user observation):
-#   Visual 1: Asga Village        -> sWarpID 211 -> zone 12 (Elmo Eslant)
-#   Visual 2: Kalluga Valley Entrance -> sWarpID 212 -> zone 11 (Karus Eslant)
-#   Visual 3: Ardream             -> sWarpID 213 -> zone 72
-#   Visual 4: Moradon             -> sWarpID 214 -> zone 21
-#   Visual 5: Ronark Land Base    -> sWarpID 215 -> zone 108
-#   Visual 6: Doda Camp           -> sWarpID 216 -> zone 11 (subzone)
-#   Visual 7: Eslant entrance     -> sWarpID 217 -> zone 12 (Eslant entrance)
+# elmo2004 (El Morad Castle, ZONE_ELMORAD = 2) warp NPCs
+# Source-of-truth: docs/warp-map.json (decoded client warpinfo.tbl).
+# Destination coordinates from DB (KO_DATABASE_SERVER_001):
+#   - Warp NPC positions:  K_OBJECTPOS2369 WHERE Type=5
+#   - Landmark monuments:  K_NPCPOS2369 WHERE strName LIKE '%monument%'/'%board%'
 #
-# Format: warpID  zone  x  y  z  radius  nation  pay  name(client ignores)
+# Elmo continent (zone 2) gate-NPC -> landmark mapping (verified by DB):
+#   NPC 21 (1587, 15, 417)   = El Morad Castle  (Elmorad Bulletine Board @ 1618, 436)
+#   NPC 22 (1676, 52, 1368)  = Asga Village     (Asga Village Monument   @ 1640, 1373)
+#   NPC 23 (298, -18, 1228)  = Laiba Village    (Raiba Village Monument  @ 323, 1230)
+#   NPC 24 (1079,-7, 1860)   = (no monument; small outpost - Doda Camp area?)
+#   NPC 25 (672, 26,  183)   = (small outpost near El Morad south)
+#   NPC 26 (204, 23, 1873)   = Doda Camp Gate   (Doda Camp Gate         @ 223, 1865)
+#   NPC 27 (1067,15, 1136)   = Doda Camp        (Doda Camp Monument     @ 1054, 1141)
+#
+# Format: warpID  zone  x  y  z  radius  nation  pay  name
 
-# === NPC 21 (main El Morad Castle gate) ===
-210   21   816  0   532  20  0  0  Hidden
-211   12   864  0   765  20  0  0  AsgaVillage
-212   11   200  0  1500  20  0  0  KallugaValleyEntrance
-213   72   190  0   897  20  0  0  Ardream
-214   21   816  0   532  20  0  0  Moradon
-215  108   513  0   916  20  0  0  RonarkLandBase
-216   11  1240  0  1740  20  0  0  DodaCamp
-217   12   526  0   540  20  0  0  EslantEntrance
+# === NPC 21 (El Morad Castle main warp, 8 entries) ===
+211   21    816  0   532  20  0  0  Moradon
+212    2   1676  0  1368  20  0  0  Asga Village
+213    2   1067  0  1136  20  0  0  Doda Camp
+214   11    200  0  1500  20  0  0  Kalluga Valley Entrance
+215   12    526  0   540  20  0  0  Eslant entrance
+216   72    190  0   897  20  0  0  Ardream
+217   73    513  0   916  20  0  0  Ronark Land Base
+218   71    622  0   911  20  0  0  Ronark Land
 
-# === NPC 22 (secondary, fewer warps) ===
-220   21   816  0   532  20  0  0  Hidden
-221   21   816  0   532  20  0  0  Moradon
-222   12   526  0   540  20  0  0  EslantEntrance
-223   31   244  0   945  20  0  0  Bifrost
+# === NPC 22 (Asga Village, 6 entries) ===
+221    2   1587  0   417  20  0  0  El Morad Castle
+222    2    298  0  1228  20  0  0  Laiba Village
+223    2   1067  0  1136  20  0  0  Doda Camp
+224   72    190  0   897  20  0  0  Ardream
+225   73    513  0   916  20  0  0  Ronark Land Base
+226   71    622  0   911  20  0  0  Ronark Land
 
-# === NPC 23 ===
-230   21   816  0   532  20  0  0  Hidden
-231   21   816  0   532  20  0  0  Moradon
-232   12   526  0   540  20  0  0  EslantEntrance
-233   30   505  0   252  20  0  0  Delos
+# === NPC 23 (Laiba Village, 7 entries) ===
+231    2   1676  0  1368  20  0  0  Asga Village
+232    2   1067  0  1136  20  0  0  Doda Camp
+233   11    200  0  1500  20  0  0  Kalluga Valley Entrance
+234    2    146  0  1832  20  0  0  Lunar Valley
+235   72    190  0   897  20  0  0  Ardream
+236   73    513  0   916  20  0  0  Ronark Land Base
+237   71    622  0   911  20  0  0  Ronark Land
 
-# === NPC 24 ===
-240   21   816  0   532  20  0  0  Hidden
-241   21   816  0   532  20  0  0  Moradon
-242   12   526  0   540  20  0  0  EslantEntrance
-243   31   244  0   945  20  0  0  Bifrost
+# === NPC 24 (small outpost, 5 entries) ===
+241    2   1676  0  1368  20  0  0  Asga Village
+242    2    298  0  1228  20  0  0  Laiba Village
+243   72    190  0   897  20  0  0  Ardream
+244   73    513  0   916  20  0  0  Ronark Land Base
+245   71    622  0   911  20  0  0  Ronark Land
 
-# === NPC 25 ===
-250   21   816  0   532  20  0  0  Hidden
-251   21   816  0   532  20  0  0  Moradon
-252   12   526  0   540  20  0  0  EslantEntrance
-253   30   505  0   252  20  0  0  Delos
+# === NPC 25 (small outpost near south, 6 entries - has Eslant) ===
+251    2   1676  0  1368  20  0  0  Asga Village
+252    2    298  0  1228  20  0  0  Laiba Village
+253   12    526  0   540  20  0  0  Eslant
+254   72    190  0   897  20  0  0  Ardream
+255   73    513  0   916  20  0  0  Ronark Land Base
+256   71    622  0   911  20  0  0  Ronark Land
 
-# === NPC 26 ===
-260   21   816  0   532  20  0  0  Hidden
-261   21   816  0   532  20  0  0  Moradon
-262   12   526  0   540  20  0  0  EslantEntrance
+# === NPC 26 (Doda Camp Gate, 4 entries) ===
+261    2    298  0  1228  20  0  0  Laiba Village
+262   72    190  0   897  20  0  0  Ardream
+263   73    513  0   916  20  0  0  Ronark Land Base
+264   71    622  0   911  20  0  0  Ronark Land
 
-# === NPC 27 ===
-270   21   816  0   532  20  0  0  Hidden
-271   21   816  0   532  20  0  0  Moradon
-272   12   526  0   540  20  0  0  EslantEntrance
+# === NPC 27 (Doda Camp, 6 entries) ===
+271    2   1587  0   417  20  0  0  El Morad Castle
+272    2   1676  0  1368  20  0  0  Asga Village
+273    2    298  0  1228  20  0  0  Laiba Village
+274   72    190  0   897  20  0  0  Ardream
+275   73    513  0   916  20  0  0  Ronark Land Base
+276   71    622  0   911  20  0  0  Ronark Land

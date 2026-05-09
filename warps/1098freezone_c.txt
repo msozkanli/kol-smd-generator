@@ -1,19 +1,15 @@
-# Ronark Land Base (zone 108)
-# Warp gate NPCs: 711 (Karus), 712 (Elmo)  -- same NPCs as freezone_b
+# 1098freezone_c (Ronark Land Base, zone 108 in production DB) warp NPCs
+# Source-of-truth: docs/warp-map.json (decoded client warpinfo.tbl).
+# Same NPC IDs (711/712) as freezone_b — gate 711 is the Karus warp NPC,
+# 712 is the Elmo warp NPC, both reused on Ronark Land + Ronark Land Base.
+# Client's warpinfo.tbl only has 2 entries per gate (suffix 1 and 4).
+#
 # Format: warpID  zone  x  y  z  radius  nation  pay  name
 
-# NPC 711 (Karus)
-7110  21  816  0  532  20  0  0  Moradon
-7111   1  437  0 1627  20  1  0  LufersonCastle
-7112  11  526  0  540  20  1  0  Eslant
-7113  31   76  0  729  20  0  0  Bifrost
-7114  30  505  0  252  20  0  0  Delos
-7115 113  963  0 1002  20  0  0  RonarkLand
+# === NPC 711 (Karus side) ===
+7111    1    437  0  1627  20  0  0  Luferson Castle
+7114   21    816  0   532  20  0  0  Moradon
 
-# NPC 712 (Elmo)
-7120  21  816  0  532  20  0  0  Moradon
-7121   2 1598  0  407  20  2  0  ElMoradCastle
-7122  12  526  0  540  20  2  0  ElmoradEslant
-7123  31  244  0  945  20  0  0  Bifrost
-7124  30  505  0  252  20  0  0  Delos
-7125 113 1061  0 1008  20  0  0  RonarkLand
+# === NPC 712 (Elmo side) ===
+7121    2   1598  0   407  20  0  0  El Morad Castle
+7124   21    816  0   532  20  0  0  Moradon

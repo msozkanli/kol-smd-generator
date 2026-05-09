@@ -1,26 +1,21 @@
-# Delos (zone 30)
-# Warp gate NPCs: 301 (Karus), 302 (Elmo), 303 (Karus), 304 (Elmo), 305 (any)
+# war_a (Delos, ZONE_DELOS = 30) warp NPCs
+# Source-of-truth: docs/warp-map.json (decoded client warpinfo.tbl).
+# Each NPC has 1 visible entry; suffix is fixed by the client (4 or 5),
+# NOT 1, so write the exact sWarpID from warp-map.json.
+#
 # Format: warpID  zone  x  y  z  radius  nation  pay  name
 
-# NPC 301 (Karus)
-3010  21  816  0  532  20  0  0  Moradon
-3011   1  437  0 1627  20  1  0  LufersonCastle
-3012  11  526  0  540  20  1  0  Eslant
+# === NPC 301 (Delos -> Moradon, Karus side) ===
+3014   21    816  0   532  20  0  0  Moradon
 
-# NPC 302 (Elmo)
-3020  21  816  0  532  20  0  0  Moradon
-3021   2 1598  0  407  20  2  0  ElMoradCastle
-3022  12  526  0  540  20  2  0  ElmoradEslant
+# === NPC 302 (Delos -> Moradon, Karus alt) ===
+3024   21    816  0   532  20  0  0  Moradon
 
-# NPC 303 (Karus)
-3030  21  816  0  532  20  0  0  Moradon
-3031   1  437  0 1627  20  1  0  LufersonCastle
+# === NPC 303 (Delos -> Moradon, Elmo side) ===
+3034   21    816  0   532  20  0  0  Moradon
 
-# NPC 304 (Elmo)
-3040  21  816  0  532  20  0  0  Moradon
-3041   2 1598  0  407  20  2  0  ElMoradCastle
+# === NPC 304 (Delos -> Moradon, Elmo alt) ===
+3044   21    816  0   532  20  0  0  Moradon
 
-# NPC 305 (any)
-3050  21  816  0  532  20  0  0  Moradon
-3051 113  963  0 1002  20  0  0  RonarkLand
-3052 108  515  0  104  20  0  0  RonarkLandBase
+# === NPC 305 (Delos -> Abyss dungeon) ===
+3055   32   1000  0  1000  20  0  0  Abyss dungeon            # TODO verify dest (ZONE_DESPERATION_ABYSS used as default)

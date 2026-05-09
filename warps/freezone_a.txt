@@ -1,15 +1,14 @@
-# Ardream (zone 72), Mini Ardream (115)
-# Warp gate NPCs: 721 (Karus), 722 (Elmo)
+# freezone_a (Ardream, ZONE_ARDREAM = 72) warp NPCs
+# Source-of-truth: docs/warp-map.json (decoded client warpinfo.tbl).
+# Client's warpinfo.tbl only has 2 entries per gate (suffix 1 and 4),
+# NOT 1..N. Use the exact sWarpIDs from warp-map.json.
+#
 # Format: warpID  zone  x  y  z  radius  nation  pay  name
 
-# NPC 721 (Karus)
-7210  21  816  0  532  20  0  0  Moradon
-7211   1  437  0 1627  20  1  0  LufersonCastle
-7212  11  526  0  540  20  1  0  Eslant
-7213 113  963  0 1002  20  0  0  RonarkLand
+# === NPC 721 (Karus side) ===
+7211    1    437  0  1627  20  0  0  Luferson Castle
+7214   21    816  0   532  20  0  0  Moradon
 
-# NPC 722 (Elmo)
-7220  21  816  0  532  20  0  0  Moradon
-7221   2 1598  0  407  20  2  0  ElMoradCastle
-7222  12  526  0  540  20  2  0  ElmoradEslant
-7223 113 1061  0 1008  20  0  0  RonarkLand
+# === NPC 722 (Elmo side) ===
+7221    2   1598  0   407  20  0  0  El Morad Castle
+7224   21    816  0   532  20  0  0  Moradon

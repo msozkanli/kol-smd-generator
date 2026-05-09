@@ -1,50 +1,73 @@
-# Luferson Castle (Karus) warps - SHIFTED mapping (sWarpID = gate_group*10 + visualPos)
-# Client hides sWarpID with last digit 0 (header/null slot)
-# Visible warps are at visual positions 1-N, mapped to sWarpID gate*10+1 .. gate*10+N
-# 
-# Format: warpID  zone  x  y  z  radius  nation  pay  name(client ignores)
+# karus2004 (Luferson Castle, ZONE_KARUS = 1) warp NPCs
+# Source-of-truth: docs/warp-map.json (decoded client warpinfo.tbl).
+# Destination coordinates from DB (KO_DATABASE_SERVER_001):
+#   - Warp NPC positions:  K_OBJECTPOS2369 WHERE Type=5
+#   - Landmark monuments:  K_NPCPOS2369 WHERE strName LIKE '%monument%'/'%board%'
+#   - Zone defaults:       ZONE_INFO2369 (InitX/Y/Z, divide by 100)
+#
+# Karus continent (zone 1) gate-NPC -> landmark mapping (verified by DB):
+#   NPC 11 (447, 14, 1616)   = Luferson Castle  (Luferson Monument @ 351,1740)
+#   NPC 12 (378, 46,  685)   = Bellua Village   (Bellua monument   @ 399, 687)
+#   NPC 13 (1708,-23, 863)   = Linate Village   (Linate Monument   @ 1727, 816)
+#   NPC 14 (914, -12, 237)   = Kalluga Valley   (no monument; best-fit by gate menu)
+#   NPC 15 (1368, 20, 1851)  = Eslant entrance  (Karus -> Eslant transition)
+#   NPC 16 (1858, 16,  161)  = Lunar Valley gate (Lunar Gate Sentinel @ 1886,215)
+#   NPC 17 (987,  9,  925)   = Raon Camp        (Laon Camp Monument @ 1012, 914)
+#
+# Format: warpID  zone  x  y  z  radius  nation  pay  name
 
-# === NPC 11 (main Karus Castle gate) - mirror Moradon's Karus gate ===
-110   21   816  0   532  20  0  0  Hidden
-111   18   850  0   850  20  0  0  FolkVillage      # Visual 1
-112   28   850  0   850  20  0  0  TaleVillage      # Visual 2
-113   21   816  0   532  20  0  0  Moradon          # Visual 3
-114   11   526  0   540  20  1  0  KarusEslant      # Visual 4
-115   30   505  0   252  20  0  0  Delos            # Visual 5
-116   72   851  0   136  20  0  0  Ardream          # Visual 6
-117  108   515  0   104  20  0  0  RonarkLandBase   # Visual 7
-118  113   963  0  1002  20  0  0  RonarkLand       # Visual 8
+# === NPC 11 (Luferson Castle main warp, 8 entries) ===
+111   21    816  0   532  20  0  0  Moradon
+112    1    378  0   685  20  0  0  Bellua Village
+113    1    914  0   237  20  0  0  Kalluga Valley
+114    1    987  0   925  20  0  0  Raon Camp
+115   11    526  0   540  20  0  0  Eslant entrance
+116   72    851  0   136  20  0  0  Ardream
+117   73    515  0   104  20  0  0  Ronark Land Base
+118   71    1375  0  1085  20  0  0  Ronark Land
 
-# === NPC 12 ===
-120   21   816  0   532  20  0  0  Hidden
-121   21   816  0   532  20  0  0  Moradon
-122   11   526  0   540  20  1  0  Eslant
-123   31    76  0   729  20  0  0  Bifrost
+# === NPC 12 (Bellua Village, 6 entries) ===
+121    1    447  0  1616  20  0  0  Luferson Castle
+122    1   1708  0   863  20  0  0  Linate Village
+123    1    987  0   925  20  0  0  Raon Camp
+124   72    851  0   136  20  0  0  Ardream
+125   73    515  0   104  20  0  0  Ronark Land Base
+126   71    1375  0  1085  20  0  0  Ronark Land
 
-# === NPC 13 ===
-130   21   816  0   532  20  0  0  Hidden
-131   21   816  0   532  20  0  0  Moradon
-132   11   526  0   540  20  1  0  Eslant
-133   30   505  0   252  20  0  0  Delos
+# === NPC 13 (Linate Village, 7 entries) ===
+131    1    378  0   685  20  0  0  Bellua Village
+132    1    987  0   925  20  0  0  Raon Camp
+133    1    914  0   237  20  0  0  Kalluga Valley
+134    1   1858  0   161  20  0  0  Lunar Valley
+135   72    851  0   136  20  0  0  Ardream
+136   73    515  0   104  20  0  0  Ronark Land Base
+137   71    1375  0  1085  20  0  0  Ronark Land
 
-# === NPC 14 ===
-140   21   816  0   532  20  0  0  Hidden
-141   21   816  0   532  20  0  0  Moradon
-142   11   526  0   540  20  1  0  Eslant
-143   31    76  0   729  20  0  0  Bifrost
+# === NPC 14 (Kalluga Valley, 5 entries) ===
+141    1    378  0   685  20  0  0  Bellua Village
+142    1   1708  0   863  20  0  0  Linate Village
+143   72    851  0   136  20  0  0  Ardream
+144   73    515  0   104  20  0  0  Ronark Land Base
+145   71    1375  0  1085  20  0  0  Ronark Land
 
-# === NPC 15 ===
-150   21   816  0   532  20  0  0  Hidden
-151   21   816  0   532  20  0  0  Moradon
-152   11   526  0   540  20  1  0  Eslant
-153   30   505  0   252  20  0  0  Delos
+# === NPC 15 (Eslant entrance, 6 entries) ===
+151    1    378  0   685  20  0  0  Bellua Village
+152    1   1708  0   863  20  0  0  Linate Village
+153   11    526  0   540  20  0  0  Eslant
+154   72    851  0   136  20  0  0  Ardream
+155   73    515  0   104  20  0  0  Ronark Land Base
+156   71    1375  0  1085  20  0  0  Ronark Land
 
-# === NPC 16 ===
-160   21   816  0   532  20  0  0  Hidden
-161   21   816  0   532  20  0  0  Moradon
-162   11   526  0   540  20  1  0  Eslant
+# === NPC 16 (Lunar Valley gate area, 4 entries) ===
+161    1   1708  0   863  20  0  0  Linate Village
+162   72    851  0   136  20  0  0  Ardream
+163   73    515  0   104  20  0  0  Ronark Land Base
+164   71    1375  0  1085  20  0  0  Ronark Land
 
-# === NPC 17 ===
-170   21   816  0   532  20  0  0  Hidden
-171   21   816  0   532  20  0  0  Moradon
-172   11   526  0   540  20  1  0  Eslant
+# === NPC 17 (Raon Camp, 6 entries) ===
+171    1    447  0  1616  20  0  0  Luferson Castle
+172    1    378  0   685  20  0  0  Bellua Village
+173    1   1708  0   863  20  0  0  Linate Village
+174   72    851  0   136  20  0  0  Ardream
+175   73    515  0   104  20  0  0  Ronark Land Base
+176   71    1375  0  1085  20  0  0  Ronark Land
